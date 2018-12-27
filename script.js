@@ -1,4 +1,3 @@
-// add selected syle for selected cards
 // only allow 2 cards to be selected at a time
 // reset guess count after 2
 // add delay to selections
@@ -98,6 +97,12 @@ grid.addEventListener('click', function(event) {
 		return;
 	}
 
-	// add .selected class
-	clicked.classList.add("selected");
+	if(count < 2) {
+		count++;
+		// add .selected class
+		clicked.classList.add("selected");		
+	}
 });
+
+// store guess counter
+let count = 0;

@@ -1,5 +1,3 @@
-// duplicate cards to have 2 sets of 12
-// randomzie card display
 // add selected syle for selected cards
 // only allow 2 cards to be selected at a time
 // reset guess count after 2
@@ -69,9 +67,11 @@ gameGrid.sort(() => 0.5 - Math.random());
 
 // Grab root div
 const game = document.getElementById("game");
+
 // Create section with class of grid
 const grid = document.createElement("section");
 grid.setAttribute("class", "grid");
+
 // Append grid section to game div
 game.appendChild(grid);
 
@@ -86,4 +86,18 @@ gameGrid.forEach(item => {
 	card.style.backgroundImage = `url(${item.img})`
 	// append card div to grid section
 	grid.appendChild(card);
+});
+
+// add event listener to grid
+grid.addEventListener('click', function(event) {
+	// event target is clicked item
+	let clicked = event.target;
+
+	// don't allow grid section itself to be selected
+	if(clicked.nodeName === "SECTION") {
+		return;
+	}
+
+	// add .selected class
+	clicked.classList.add("selected");
 });

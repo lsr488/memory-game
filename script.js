@@ -1,4 +1,3 @@
-// reset guess count after 2
 // add delay to selections
 // show back of card initially and flip on select
 // finished game
@@ -14,6 +13,9 @@ let secondGuess = "";
 
 // previous guess
 let previousTarget = null;
+
+// delay for card flipping
+let delay = 1200;
 
 // Card Data
 const cardsArray = [
@@ -122,11 +124,11 @@ grid.addEventListener('click', function(event) {
 		if(firstGuess != "" && secondGuess != "") {
 			// and firstGuess matches secondGuess
 			if(firstGuess === secondGuess) {
-				// run match() & reset
-				match();
-				resetGuesses();
+				// run match() & resetGuesses(), on a delay
+				setTimeout(match, delay);
+				setTimeout(resetGuesses, delay);
 			} else {
-				resetGuesses();
+				setTimeout(resetGuesses, delay);
 			}
 		}	
 		// set previous target to clicked

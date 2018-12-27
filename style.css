@@ -69,3 +69,12 @@ body {
 .match .front {
 	background: var(--main-background-color) !important;
 }
+
+.gameOver {
+	color: white;
+	font-size: 3em;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+}

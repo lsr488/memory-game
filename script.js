@@ -124,12 +124,10 @@ grid.addEventListener('click', function(event) {
 		if(count === 1) {
 			// assign first guess and .selected
 			firstGuess = clicked.parentNode.dataset.name;
-			console.log(firstGuess); // DELETE ME
 			clicked.parentNode.classList.add("selected");
 		} else {
 			// assign second guess and .selected
 			secondGuess = clicked.parentNode.dataset.name;
-			console.log(secondGuess); // DELETE ME
 			clicked.parentNode.classList.add("selected");
 		}
 		// if both guesses aren't empty
@@ -154,6 +152,9 @@ const match = () => {
 	selected.forEach(card => {
 		card.classList.add("match");
 	});
+
+	// display end-of-game msg
+	gameOver();
 }
 
 // reset guesses after second guess
@@ -168,4 +169,14 @@ const resetGuesses = () => {
 	selected.forEach(card => {
 		card.classList.remove("selected");
 	});
+}
+
+const gameOver = () => {
+	// if all cards have .match class, display end-of-game scene
+	var selected = document.querySelectorAll(".match");
+	console.log(selected.length); // DELETE ME	
+	if(selected.length === 24) {
+		grid.classList.add("gameOver");
+		grid.textContent = "You won! Play again?";
+	}
 }

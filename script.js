@@ -61,6 +61,12 @@ const cardsArray = [
 	},
 ];
 
+// duplicate cardsArray by using .concat()
+let gameGrid = cardsArray.concat(cardsArray);
+
+// shuffle gameGrid
+gameGrid.sort(() => 0.5 - Math.random());
+
 // Grab root div
 const game = document.getElementById("game");
 // Create section with class of grid
@@ -69,8 +75,8 @@ grid.setAttribute("class", "grid");
 // Append grid section to game div
 game.appendChild(grid);
 
-// loop through cardsArray and create new card div for each object
-cardsArray.forEach(item => {
+// loop through gameGrid and create new card div for each object
+gameGrid.forEach(item => {
 	const card = document.createElement("div");
 	// apply card class to that div
 	card.classList.add("card");

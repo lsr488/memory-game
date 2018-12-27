@@ -1,4 +1,3 @@
-// display 12 cards
 // duplicate cards to have 2 sets of 12
 // randomzie card display
 // add selected syle for selected cards
@@ -61,3 +60,24 @@ const cardsArray = [
 		"img": "https://raw.githubusercontent.com/taniarascia/memory/master/img/goomba.png",
 	},
 ];
+
+// Grab root div
+const game = document.getElementById("game");
+// Create section with class of grid
+const grid = document.createElement("section");
+grid.setAttribute("class", "grid");
+// Append grid section to game div
+game.appendChild(grid);
+
+// loop through cardsArray and create new card div for each object
+cardsArray.forEach(item => {
+	const card = document.createElement("div");
+	// apply card class to that div
+	card.classList.add("card");
+	// set data-name attr of div to cardsArray name
+	card.dataset.name = item.name;
+	// apply background img of div to the cardsArray image
+	card.style.backgroundImage = `url(${item.img})`
+	// append card div to grid section
+	grid.appendChild(card);
+});

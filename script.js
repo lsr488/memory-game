@@ -1,4 +1,3 @@
-// only allow 2 cards to be selected at a time
 // reset guess count after 2
 // add delay to selections
 // show back of card initially and flip on select
@@ -123,8 +122,11 @@ grid.addEventListener('click', function(event) {
 		if(firstGuess != "" && secondGuess != "") {
 			// and firstGuess matches secondGuess
 			if(firstGuess === secondGuess) {
-				// run match()
+				// run match() & reset
 				match();
+				resetGuesses();
+			} else {
+				resetGuesses();
 			}
 		}	
 		// set previous target to clicked
@@ -137,5 +139,19 @@ const match = () => {
 	var selected = document.querySelectorAll(".selected");
 	selected.forEach(card => {
 		card.classList.add("match");
+	});
+}
+
+// reset guesses after second guess
+const resetGuesses = () => {
+	// reset variables to default values
+	firstGuess = "";
+	secondGuess = "";
+	count = 0;
+
+	// reset selection markers
+	var selected = document.querySelectorAll(".selected");
+	selected.forEach(card => {
+		card.classList.remove("selected");
 	});
 }

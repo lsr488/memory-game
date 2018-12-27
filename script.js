@@ -1,5 +1,3 @@
-// show back of card initially and flip on select
-// finished game
 // end-of-game stats?
 // reset button?
 
@@ -111,8 +109,12 @@ grid.addEventListener('click', function(event) {
 	// event target is clicked item
 	let clicked = event.target;
 
-	// don't allow grid section itself or same card to be selected
-	if(clicked.nodeName === "SECTION" || clicked === previousTarget) {
+	// don't allow grid section itself or same card or already-selected card to be selected
+	if(
+		clicked.nodeName === "SECTION" || 
+		clicked === previousTarget ||
+		clicked.parentNode.classList.contains("selected")
+		) {
 		return;
 	}
 

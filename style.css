@@ -65,7 +65,8 @@ body {
 	background: var(--main-background-color) !important;
 }
 
-.gameOver {
+.game-over {
+	display: block;
 	color: white;
 	font-size: 3em;
 	position: absolute;

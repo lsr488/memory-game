@@ -175,8 +175,9 @@ const gameOver = () => {
 	// if all cards have .match class, display end-of-game scene
 	var selected = document.querySelectorAll(".match");
 	if(selected.length === 24) {
-		grid.classList.add("gameOver");
-		grid.textContent = "You won! Play again?";
+		grid.classList.add("game-over");
+		const winText = "<p>You won! Play again?</p>"
+		grid.innerHTML = winText;
 
 		const button = document.createElement("button");
 		grid.appendChild(button);

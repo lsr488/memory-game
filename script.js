@@ -174,9 +174,17 @@ const resetGuesses = () => {
 const gameOver = () => {
 	// if all cards have .match class, display end-of-game scene
 	var selected = document.querySelectorAll(".match");
-	console.log(selected.length); // DELETE ME	
 	if(selected.length === 24) {
 		grid.classList.add("gameOver");
 		grid.textContent = "You won! Play again?";
+
+		const button = document.createElement("button");
+		grid.appendChild(button);
+		button.classList.add("button");
+		button.textContent = "Reset game";
+
+		button.addEventListener("click", function(event) {
+			location.reload();
+		});
 	}
 }

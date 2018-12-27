@@ -5,12 +5,14 @@
 }
 
 :root {
-	--main-background-color: /*white*/ #6589F9;	
+	--main-background-color: #6589F9;
+	--dark-orange: #E76509;
 }
 
 body {
 	margin: 20px, 0;
 	background: var(--main-background-color);
+  font-family: 'Dosis', sans-serif;
 }
 
 .grid {
@@ -23,13 +25,9 @@ body {
 
 .card {
 	margin: 5px;
-	/*background-color: var(--main-background-color);*/
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center center;
-	/*height: 150px;*/
-	/*width: 150px;*/
-
 	position: relative;
 	transition: all .4s linear;
 	transform-style: preserve-3d;
@@ -49,20 +47,17 @@ body {
 }
 
 .front {
-	/*z-index: 2;*/
 	background: #FAB942 url('https://raw.githubusercontent.com/taniarascia/memory/master/img/question.gif') no-repeat center center / contain;
 }
 
 .back {
 	transform: rotateY(180deg);
-	/*background-color: var(--main-background-color);*/
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center center;
 }
 
 .selected {
-	/*border: 4px solid blue;*/
 	transform: rotateY(180deg);
 }
 
@@ -77,4 +72,20 @@ body {
 	top: 50%;
 	left: 50%;
 	transform: translateX(-50%) translateY(-50%);
+}
+
+.button {
+  font-family: 'Dosis', sans-serif;
+	background-color: #FAB942;
+	color: var(--dark-orange);
+	font-weight: 700;
+	width: 150px;
+	height: 150px;
+	margin-top: 2em;
+	font-size: 35px;
+	border-left: 10px solid var(--dark-orange);
+	border-top: 10px solid var(--dark-orange);
+	border-right: 10px solid black;
+	border-bottom: 10px solid black;
+	text-shadow: 1px 1px var(--dark-orange);
 }

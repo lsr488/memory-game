@@ -5,7 +5,7 @@
 }
 
 :root {
-	--main-background-color: #6589F9;	
+	--main-background-color: /*white*/ #6589F9;	
 }
 
 body {
@@ -23,19 +23,49 @@ body {
 
 .card {
 	margin: 5px;
-	background-color: var(--main-background-color);
+	/*background-color: var(--main-background-color);*/
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center center;
+	/*height: 150px;*/
+	/*width: 150px;*/
+
+	position: relative;
+	transition: all .4s linear;
+	transform-style: preserve-3d;
+}
+
+.card,
+.back, 
+.front {
 	height: 150px;
 	width: 150px;
 }
 
-.selected {
-	border: 4px solid blue;
+.back,
+.front {
+	position: absolute;
+	backface-visibility: hidden;
 }
 
-.match {
-	border: 4px solid red;
-	background-image: none !important;
+.front {
+	/*z-index: 2;*/
+	background: #FAB942 url('https://raw.githubusercontent.com/taniarascia/memory/master/img/question.gif') no-repeat center center / contain;
+}
+
+.back {
+	transform: rotateY(180deg);
+	/*background-color: var(--main-background-color);*/
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.selected {
+	/*border: 4px solid blue;*/
+	transform: rotateY(180deg);
+}
+
+.match .front {
+	background: var(--main-background-color) !important;
 }

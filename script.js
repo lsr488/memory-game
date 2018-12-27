@@ -6,6 +6,16 @@
 // end-of-game stats?
 // reset button?
 
+// store guess counter
+let count = 0;
+
+// store guesses
+let firstGuess = "";
+let secondGuess = "";
+
+// previous guess
+let previousTarget = null;
+
 // Card Data
 const cardsArray = [
 	{
@@ -92,17 +102,40 @@ grid.addEventListener('click', function(event) {
 	// event target is clicked item
 	let clicked = event.target;
 
-	// don't allow grid section itself to be selected
-	if(clicked.nodeName === "SECTION") {
+	// don't allow grid section itself or same card to be selected
+	if(clicked.nodeName === "SECTION" || clicked === previousTarget) {
 		return;
 	}
 
+	// only allow 2 cards to be selected
 	if(count < 2) {
 		count++;
-		// add .selected class
-		clicked.classList.add("selected");		
+		if(count === 1) {
+			// assign first guess and .selected
+			firstGuess = clicked.dataset.name;
+			clicked.classList.add("selected");
+		} else {
+			// assign second guess and .selected
+			secondGuess = clicked.dataset.name;
+			clicked.classList.add("selected");
+		}
+		// if both guesses aren't empty
+		if(firstGuess != "" && secondGuess != "") {
+			// and firstGuess matches secondGuess
+			if(firstGuess === secondGuess) {
+				// run match()
+				match();
+			}
+		}	
+		// set previous target to clicked
+		previousTarget = clicked;
 	}
 });
 
-// store guess counter
-let count = 0;
+// check for match and add CSS .match
+const match = () => {
+	var selected = document.querySelectorAll(".selected");
+	selected.forEach(card => {
+		card.classList.add("match");
+	});
+}
